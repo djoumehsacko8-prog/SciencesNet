@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SciencesNet - Portail Scientifique Unique</title>
+
+    <!-- ===================== STYLES ===================== -->
+    <style>
+        /* RESET DE BASE */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* STYLE GLOBAL DU SITE */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        /* ===================== HEADER / LANDING ===================== */
+        header {
+            background: linear-gradient(135deg, #1a73e8, #1565c0); /* Dégradé bleu */
+            color: white;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        /* LOGO DU SITE */
+        header img {
+            width: 120px;
+            margin-bottom: 15px;
+        }
+
+        /* TITRE PRINCIPAL DU SITE */
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        /* SLOGAN OU DESCRIPTION DU SITE */
+        header p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+
+        /* BOUTON PRINCIPAL */
+        header a {
+            background-color: #ffdd57;
+            color: #1565c0;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s;
+        }
+        header a:hover {
+            background-color: #ffc107;
+            transform: scale(1.05);
+        }
+
+        /* ===================== NAVIGATION ===================== */
+        nav {
+            background-color: #1565c0;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            flex-wrap: wrap;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 5px 20px;
+            font-weight: bold;
+            font-size: 1em;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===================== CONTAINER PRINCIPAL ===================== */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+
+        /* TITRES DE SECTION */
+        .section-title {
+            color: #1a73e8;
+            border-bottom: 3px solid #1a73e8;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 2em;
+            padding-bottom: 5px;
+        }
+
+        /* ===================== ARTICLES ===================== */
+        .article {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .article:hover {
+            transform: translateY(-5px);
+        }
+        .article h3 {
+            margin-bottom: 10px;
+            color: #1565c0;
+        }
+        .article p {
+            margin-bottom: 10px;
+        }
+        .article a {
+            color: #1a73e8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .article a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===================== CATEGORIES ===================== */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+        .category-box {
+            flex: 1 1 200px;
+            background-color: #ffdd57;
+            color: #1565c0;
+            text-align: center;
+            padding: 20px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .category-box:hover {
+            background-color: #ffc107;
+            transform: scale(1.05);
+        }
+
+        /* ===================== FORMULAIRE DE SOUMISSION ===================== */
+        .form-container {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 50px;
+        }
+        input, textarea, select, button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 1em;
+        }
+        button {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background-color: #1565c0;
+        }
+
+        /* ===================== FOOTER ===================== */
+        footer {
+            background-color: #1a73e8;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media(max-width:768px) {
+            header h1 { font-size: 2.2em; }
+            header p { font-size: 1.2em; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===================== HEADER / LANDING ===================== -->
+    <header>
+        <!-- Logo du site -->
+        <img src="https://via.placeholder.com/120x120.png?text=SN" alt="Logo SciencesNet">
+        <!-- Nom du site -->
+        <h1>SciencesNet</h1>
+        <!-- Slogan -->
+        <p>Portail scientifique unique pour publier et explorer tous les domaines</p>
+        <!-- Bouton pour descendre aux articles -->
+        <a href="#articles">Explorer les articles</a>
+    </header>
+
+    <!-- ===================== NAVIGATION ===================== -->
+    <nav>
+        <!-- Liens vers les sections principales -->
+        <a href="#articles">Articles</a>
+        <a href="#categories">Catégories</a>
+        <a href="#submit">Soumettre</a>
+        <a href="#about">À propos</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- ===================== CONTAINER PRINCIPAL ===================== -->
+    <div class="container">
+
+        <!-- ===================== CATEGORIES ===================== -->
+        <section id="categories">
+            <h2 class="section-title">Catégories scientifiques</h2>
+            <div class="categories">
+                <!-- Chaque catégorie a un attribut data-category pour filtrage -->
+                <div class="category-box" data-category="Physique">Physique</div>
+                <div class="category-box" data-category="Biologie">Biologie</div>
+                <div class="category-box" data-category="Mathématiques">Mathématiques</div>
+                <div class="category-box" data-category="Chimie">Chimie</div>
+                <div class="category-box" data-category="Informatique">Informatique</div>
+                <div class="category-box" data-category="Médecine">Médecine</div>
+                <div class="category-box" data-category="Économie">Économie</div>
+                <div class="category-box" data-category="Autres">Autres</div>
+            </div>
+        </section>
+
+        <!-- ===================== ARTICLES ===================== -->
+        <section id="articles">
+            <h2 class="section-title">Articles récents</h2>
+            <!-- Les articles sont filtrés par catégorie via JS -->
+            <div id="article-list">
+                <!-- Exemple d'article -->
+                <div class="article" data-category="Physique">
+                    <h3>Article Physique Exemple</h3>
+                    <p>Auteur: Dr. John Doe | Date: 27 Janvier 2026</p>
+                    <p>Résumé: Article sur la physique fondamentale...</p>
+                    <a href="#">Lire plus / Télécharger PDF</a>
+                </div>
+                <div class="article" data-category="Biologie">
+                    <h3>Article Biologie Exemple</h3>
+                    <p>Auteur: Dr. Jane Smith | Date: 26 Janvier 2026</p>
+                    <p>Résumé: Article sur la biologie cellulaire...</p>
+                    <a href="#">Lire plus / Télécharger PDF</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================== FORMULAIRE DE SOUMISSION ===================== -->
+        <section id="submit">
+            <h2 class="section-title">Soumettre un article</h2>
+            <div class="form-container">
+                <!-- Formulaire complet pour publier un article -->
+                <form id="submissionForm">
+                    <input type="text" placeholder="Titre de l'article" required>
+                    <input type="text" placeholder="Nom complet" required>
+                    <input type="text" placeholder="Affiliation / Institution" required>
+                    <input type="text" placeholder="Numéro de téléphone" required>
+                    <input type="email" placeholder="Email" required>
+                    <select required>
+                        <option value="">Sélectionnez la catégorie</option>
+                        <option value="Physique">Physique</option>
+                        <option value="Biologie">Biologie</option>
+                        <option value="Mathématiques">Mathématiques</option>
+                        <option value="Chimie">Chimie</option>
+                        <option value="Informatique">Informatique</option>
+                        <option value="Médecine">Médecine</option>
+                        <option value="Économie">Économie</option>
+                        <option value="Autres">Autres</option>
+                    </select>
+                    <textarea placeholder="Résumé de l'article" rows="5" required></textarea>
+                    <input type="file" accept=".pdf">
+                    <button type="submit">Publier l'article</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ===================== À PROPOS ===================== -->
+        <section id="about">
+            <h2 class="section-title">À propos de SciencesNet</h2>
+            <p>
+                SciencesNet est un portail scientifique unique permettant de publier et lire des articles dans tous les domaines scientifiques.
+                Ce site est le fruit du travail d'une équipe expérimentée de l'Institut Ouest-Africain des Mathématiques, évoluant au sein de l'Université Gamal Abdel Nasser de Conakry.
+                Notre objectif est de faciliter l'accès à la recherche scientifique et d'offrir des outils interactifs pour apprendre et publier facilement.
+            </p>
+        </section>
+
+        <!-- ===================== CONTACT ===================== -->
+        <section id="contact">
+            <h2 class="section-title">Contact</h2>
+            <div class="form-container">
+                <form>
+                    <input type="text" placeholder="Nom" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Message" rows="5" required></textarea>
+                    <button type="submit">Envoyer</button>
+                </form>
+            </div>
+            <!-- Informations de contact visibles -->
+            <p>Contact direct: +224 627 66 91 00 | Email: djoumeh8sacko@gmail.com</p>
+        </section>
+
+    </div>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer>
+        <p>&copy; 2026 SciencesNet. Tous droits réservés.</p>
+    </footer>
+
+    <!-- ===================== SCRIPT INTERACTIF ===================== -->
+    <script>
+        // ================= FILTRAGE DES ARTICLES PAR CATEGORIE =================
+        const categories = document.querySelectorAll('.category-box');
+        const articles = document.querySelectorAll('.article');
+
+        categories.forEach(category => {
+            category.addEventListener('click', () => {
+                let selected = category.getAttribute('data-category');
+                articles.forEach(article => {
+                    // Montrer seulement les articles qui correspondent à la catégorie sélectionnée
+                    if(selected === 'Autres' || article.getAttribute('data-category') === selected) {
+                        article.style.display = 'block';
+                    } else {
+                        article.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // ================= PUBLICATION SIMPLIFIÉE =================
+        const form = document.getElementById('submissionForm');
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Empêche le rechargement
+            alert('Merci! Votre article a été soumis.'); // Pour l'instant, juste une alerte
+            // Ici tu peux ajouter une logique pour stocker l'article dans une base ou JSON
+            form.reset(); // Réinitialise le formulaire
+        });
+    </script>
+
+</body>
+</html>
