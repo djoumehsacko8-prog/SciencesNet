@@ -6,174 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SciencesNet - Portail Scientifique Unique</title>
 
-<style>
-/* RESET DE BASE */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!-- Lien vers CSS externe -->
+<link rel="stylesheet" href="style.css">
 
-/* STYLE GLOBAL */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-}
+<!-- Manifest pour PWA -->
+<link rel="manifest" href="manifest.json">
 
-/* HEADER / LANDING PAGE */
-header {
-    background: linear-gradient(135deg,#1a73e8,#1565c0);
-    color: white;
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-}
-
-header img {
-    width: 120px;
-    margin-bottom: 15px;
-}
-
-header h1 {
-    font-size: 3em;
-    margin-bottom: 15px;
-}
-
-header p {
-    font-size: 1.5em;
-    margin-bottom: 20px;
-}
-
-header a {
-    background-color: #ffdd57;
-    color: #1565c0;
-    text-decoration: none;
-    padding: 15px 30px;
-    border-radius: 50px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-select {
-    margin-top: 15px;
-    padding: 8px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-}
-
-/* NAVIGATION */
-nav {
-    background-color: #1565c0;
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* CONTENEUR PRINCIPAL */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 40px auto;
-}
-
-/* TITRES DE SECTION */
-.section-title {
-    font-size: 2em;
-    color: #1a73e8;
-    border-bottom: 3px solid #1a73e8;
-    margin-bottom: 20px;
-    display: inline-block;
-}
-
-/* CATEGORIES */
-.categories {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.category-box {
-    background: #ffdd57;
-    padding: 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: bold;
-    text-align: center;
-}
-
-.category-box.active {
-    background: #ffc107;
-}
-
-/* ARTICLES */
-.article {
-    background: white;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,.1);
-}
-
-/* FORMULAIRE */
-input, textarea, select, button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 1em;
-}
-
-button {
-    background-color: #1a73e8;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-button:hover {
-    background-color: #1565c0;
-}
-
-/* Champs obligatoires signalés par astérisque */
-.required::after {
-    content:" *";
-    color: red;
-}
-
-/* FOOTER */
-footer {
-    background-color: #1a73e8;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-</style>
 </head>
 
 <body>
 
-<!-- MESSAGE DE BIENVENUE -->
-<script>
-alert("Bienvenue sur SciencesNet ! Explorez et publiez vos articles scientifiques.");
-</script>
+<!-- TOAST DE BIENVENUE -->
+<div id="welcomeToast" class="toast">Bienvenue sur SciencesNet ! Explorez et publiez vos articles scientifiques.</div>
 
 <!-- HEADER -->
 <header>
@@ -202,11 +46,14 @@ alert("Bienvenue sur SciencesNet ! Explorez et publiez vos articles scientifique
     <section id="categories">
         <h2 class="section-title" id="catTitle">Catégories</h2>
         <div class="categories">
-            <div class="category-box" data-cat="Physique">Physique</div>
-            <div class="category-box" data-cat="Biologie">Biologie</div>
             <div class="category-box" data-cat="Mathématiques">Mathématiques</div>
+            <div class="category-box" data-cat="Physique">Physique</div>
             <div class="category-box" data-cat="Chimie">Chimie</div>
+            <div class="category-box" data-cat="Biologie">Biologie</div>
+            <div class="category-box" data-cat="Médecine">Médecine</div>
             <div class="category-box" data-cat="Informatique">Informatique</div>
+            <div class="category-box" data-cat="Économie">Économie</div>
+            <div class="category-box" data-cat="Économique">Économique</div>
         </div>
     </section>
 
@@ -220,22 +67,43 @@ alert("Bienvenue sur SciencesNet ! Explorez et publiez vos articles scientifique
     <section id="submit">
         <h2 class="section-title" id="submitTitle">Soumettre un article</h2>
 
+        <!-- CHOIX DU PROFIL -->
+        <label>Vous êtes :</label>
+        <select id="userProfile">
+            <option value="journalist">Journaliste</option>
+            <option value="scientist">Scientifique</option>
+        </select>
+
         <!-- INFORMATIONS PERSONNELLES -->
         <input id="firstName" placeholder="Prénom" class="required">
         <input id="lastName" placeholder="Nom" class="required">
-        <input id="countryOrigin" placeholder="Pays d'origine" class="required">
-        <input id="countryResidence" placeholder="Pays de résidence" class="required">
-        <input id="position" placeholder="Fonction" class="required">
-        <input id="profession" placeholder="Profession" class="required">
+
+        <!-- PAYS (menu déroulant) -->
+        <select id="country" class="required">
+            <option value="">Sélectionner le pays</option>
+            <option value="France">France</option>
+            <option value="Guinée">Guinée</option>
+            <option value="USA">USA</option>
+            <option value="Canada">Canada</option>
+            <option value="Allemagne">Allemagne</option>
+            <!-- Ajouter tous les pays que tu veux -->
+        </select>
+
+        <!-- CHAMPS SPÉCIFIQUE SELON PROFIL -->
+        <input id="media" placeholder="Nom du média" class="profile-specific">
+        <input id="institute" placeholder="Université / Institut" class="profile-specific">
 
         <!-- INFORMATIONS ARTICLE -->
         <input id="articleTitle" placeholder="Nom de l'article" class="required">
         <select id="articleDomain" class="required">
-            <option>Physique</option>
-            <option>Biologie</option>
             <option>Mathématiques</option>
+            <option>Physique</option>
             <option>Chimie</option>
+            <option>Biologie</option>
+            <option>Médecine</option>
             <option>Informatique</option>
+            <option>Économie</option>
+            <option>Économique</option>
         </select>
         <textarea id="articleSummary" placeholder="Résumé de l'article" class="required"></textarea>
 
@@ -243,7 +111,7 @@ alert("Bienvenue sur SciencesNet ! Explorez et publiez vos articles scientifique
         <label for="articleFile" class="required">Fichier PDF de l'article</label>
         <input type="file" id="articleFile" accept=".pdf" class="required">
 
-        <button onclick="publishArticle()">Publier</button>
+        <button id="publishBtn">Publier</button>
     </section>
 
     <!-- À PROPOS -->
@@ -261,7 +129,7 @@ alert("Bienvenue sur SciencesNet ! Explorez et publiez vos articles scientifique
         <input placeholder="Nom" id="contactName" class="required">
         <input placeholder="Email" id="contactEmail" class="required">
         <textarea placeholder="Message" id="contactMessage" class="required"></textarea>
-        <button onclick="sendContact()">Envoyer</button>
+        <button id="sendContactBtn">Envoyer</button>
         <p>Contact direct: +224 627 66 91 00 | Email: djoumeh8sacko@gmail.com</p>
     </section>
 
@@ -272,98 +140,8 @@ alert("Bienvenue sur SciencesNet ! Explorez et publiez vos articles scientifique
 <p>© 2026 SciencesNet. Tous droits réservés.</p>
 </footer>
 
-<!-- SCRIPT JS -->
-<script>
-// ARTICLES INITIAUX
-const articles = [
- {title:"Physique moderne", author:"Dr Doe", cat:"Physique", resume:"Recherche fondamentale"},
- {title:"Biologie cellulaire", author:"Dr Smith", cat:"Biologie", resume:"Étude avancée"}
-];
-
-// AFFICHAGE ARTICLES
-function renderArticles(filter=null){
-    const list=document.getElementById("articleList");
-    list.innerHTML="";
-    articles
-    .filter(a=>!filter||a.cat===filter)
-    .forEach(a=>{
-        list.innerHTML+=`
-        <div class="article">
-            <h3>${a.title}</h3>
-            <p>${a.author}</p>
-            <p>${a.resume}</p>
-        </div>`;
-    });
-}
-renderArticles();
-
-// FILTRAGE CATEGORIES
-document.querySelectorAll(".category-box").forEach(b=>{
-    b.onclick=()=>{
-        document.querySelectorAll(".category-box").forEach(x=>x.classList.remove("active"));
-        b.classList.add("active");
-        renderArticles(b.dataset.cat);
-    }
-});
-
-// PUBLICATION ARTICLE
-function publishArticle(){
-    // Récupération des champs
-    const fields = ["firstName","lastName","countryOrigin","countryResidence","position","profession","articleTitle","articleDomain","articleSummary","articleFile"];
-    for(let f of fields){
-        const el = document.getElementById(f);
-        if(el.value.trim() === "" || (f==="articleFile" && el.files.length===0)){
-            alert("Veuillez remplir tous les champs obligatoires et ajouter votre fichier PDF.");
-            return;
-        }
-    }
-
-    // Ajouter l'article
-    const article = {
-        title: document.getElementById("articleTitle").value,
-        author: document.getElementById("firstName").value + " " + document.getElementById("lastName").value,
-        cat: document.getElementById("articleDomain").value,
-        resume: document.getElementById("articleSummary").value
-    };
-    articles.push(article);
-    renderArticles();
-
-    alert("Votre article a été publié avec succès !");
-    
-    // Réinitialisation du formulaire
-    fields.forEach(f=>{
-        const el = document.getElementById(f);
-        if(f==="articleFile"){ el.value=""; } else { el.value=""; }
-    });
-}
-
-// CONTACT
-function sendContact(){
-    const name = document.getElementById("contactName").value.trim();
-    const email = document.getElementById("contactEmail").value.trim();
-    const message = document.getElementById("contactMessage").value.trim();
-    if(!name || !email || !message){
-        alert("Veuillez remplir tous les champs !");
-        return;
-    }
-    alert("Merci "+name+" ! Votre message a été envoyé.");
-}
-
-// MULTILINGUE
-const translations = {
-fr: { title:"SciencesNet", subtitle:"Portail scientifique unique", cat:"Catégories", art:"Articles", submit:"Soumettre un article" },
-en: { title:"SciencesNet", subtitle:"Unique scientific portal", cat:"Categories", art:"Articles", submit:"Submit article" }
-};
-
-langSwitch.onchange = ()=>{
-    const t = translations[langSwitch.value];
-    title.innerText = t.title;
-    subtitle.innerText = t.subtitle;
-    catTitle.innerText = t.cat;
-    artTitle.innerText = t.art;
-    submitTitle.innerText = t.submit;
-};
-</script>
+<!-- Script JS -->
+<script src="script.js"></script>
 
 </body>
 </html>
