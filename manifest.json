@@ -1,0 +1,11 @@
+{
+    "name": "SciencesNet",
+    "short_name": "SciencesNet",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#1a73e8",
+    "theme_color": "#1a73e8",
+    "icons": [
+        {"src": "logo-ioam.png", "sizes": "192x192", "type": "image/png"}
+    ]
+}

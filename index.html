@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SciencesNet - Portail Scientifique Unique</title>
+
+<!-- Lien vers CSS externe -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Manifest pour PWA -->
+<link rel="manifest" href="manifest.json">
+
+</head>
+
+<body>
+
+<!-- TOAST DE BIENVENUE -->
+<div id="welcomeToast" class="toast">Bienvenue sur SciencesNet ! Explorez et publiez vos articles scientifiques.</div>
+
+<!-- HEADER -->
+<header>
+    <img src="logo-ioam.png" alt="Logo IOAM">
+    <h1 id="title">SciencesNet</h1>
+    <p id="subtitle">Portail scientifique unique pour publier et explorer tous les domaines</p>
+    <a href="#articles">Explorer les articles</a>
+    <select id="langSwitch">
+        <option value="fr">Français</option>
+        <option value="en">English</option>
+    </select>
+</header>
+
+<!-- NAVIGATION -->
+<nav>
+    <a href="#articles" id="navArticles">Articles</a>
+    <a href="#categories" id="navCategories">Catégories</a>
+    <a href="#submit" id="navSubmit">Soumettre</a>
+    <a href="#about" id="navAbout">À propos</a>
+    <a href="#contact" id="navContact">Contact</a>
+</nav>
+
+<div class="container">
+
+    <!-- CATEGORIES -->
+    <section id="categories">
+        <h2 class="section-title" id="catTitle">Catégories</h2>
+        <div class="categories">
+            <div class="category-box" data-cat="Mathématiques">Mathématiques</div>
+            <div class="category-box" data-cat="Physique">Physique</div>
+            <div class="category-box" data-cat="Chimie">Chimie</div>
+            <div class="category-box" data-cat="Biologie">Biologie</div>
+            <div class="category-box" data-cat="Médecine">Médecine</div>
+            <div class="category-box" data-cat="Informatique">Informatique</div>
+            <div class="category-box" data-cat="Économie">Économie</div>
+            <div class="category-box" data-cat="Économique">Économique</div>
+        </div>
+    </section>
+
+    <!-- ARTICLES -->
+    <section id="articles">
+        <h2 class="section-title" id="artTitle">Articles</h2>
+        <div id="articleList"></div>
+    </section>
+
+    <!-- FORMULAIRE DE SOUMISSION -->
+    <section id="submit">
+        <h2 class="section-title" id="submitTitle">Soumettre un article</h2>
+
+        <!-- CHOIX DU PROFIL -->
+        <label>Vous êtes :</label>
+        <select id="userProfile">
+            <option value="journalist">Journaliste</option>
+            <option value="scientist">Scientifique</option>
+        </select>
+
+        <!-- INFORMATIONS PERSONNELLES -->
+        <input id="firstName" placeholder="Prénom" class="required">
+        <input id="lastName" placeholder="Nom" class="required">
+
+        <!-- PAYS (menu déroulant) -->
+        <select id="country" class="required">
+            <option value="">Sélectionner le pays</option>
+            <option value="France">France</option>
+            <option value="Guinée">Guinée</option>
+            <option value="USA">USA</option>
+            <option value="Canada">Canada</option>
+            <option value="Allemagne">Allemagne</option>
+            <!-- Ajouter tous les pays que tu veux -->
+        </select>
+
+        <!-- CHAMPS SPÉCIFIQUE SELON PROFIL -->
+        <input id="media" placeholder="Nom du média" class="profile-specific">
+        <input id="institute" placeholder="Université / Institut" class="profile-specific">
+
+        <!-- INFORMATIONS ARTICLE -->
+        <input id="articleTitle" placeholder="Nom de l'article" class="required">
+        <select id="articleDomain" class="required">
+            <option>Mathématiques</option>
+            <option>Physique</option>
+            <option>Chimie</option>
+            <option>Biologie</option>
+            <option>Médecine</option>
+            <option>Informatique</option>
+            <option>Économie</option>
+            <option>Économique</option>
+        </select>
+        <textarea id="articleSummary" placeholder="Résumé de l'article" class="required"></textarea>
+
+        <!-- FICHIER PDF -->
+        <label for="articleFile" class="required">Fichier PDF de l'article</label>
+        <input type="file" id="articleFile" accept=".pdf" class="required">
+
+        <button id="publishBtn">Publier</button>
+    </section>
+
+    <!-- À PROPOS -->
+    <section id="about">
+        <h2 class="section-title">À propos</h2>
+        <p>
+            SciencesNet est un portail scientifique permettant de publier et lire des articles dans tous les domaines scientifiques.
+            Ce site est développé par DJOUME SACKO, étudiant à l'Institut Ouest-Africain des Mathématiques.
+        </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <input placeholder="Nom" id="contactName" class="required">
+        <input placeholder="Email" id="contactEmail" class="required">
+        <textarea placeholder="Message" id="contactMessage" class="required"></textarea>
+        <button id="sendContactBtn">Envoyer</button>
+        <p>Contact direct: +224 627 66 91 00 | Email: djoumeh8sacko@gmail.com</p>
+    </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+<p>© 2026 SciencesNet. Tous droits réservés.</p>
+</footer>
+
+<!-- Script JS -->
+<script src="script.js"></script>
+
+</body>
+</html>
